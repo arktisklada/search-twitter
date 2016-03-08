@@ -1,0 +1,33 @@
+en:
+  app:
+    author: "Clayton Liggitt"
+    description: "A Ruby on Rails application for searching Twitter statuses and users."
+    name: "Search Twitter!"
+  button:
+    search: "Search"
+    sign_in: "Sign in with Twitter"
+    sign_out: "Sign out"
+  help:
+    sign_in: "Start by pressing this button to authenticate with Twitter."
+  h:
+    tweet_search_query: "Tweet search query:"
+    user_search_query: "User search query:"
+    tweets: "Tweets"
+  th:
+    location: "Location"
+    tweets: "Tweets"
+    following: "Following"
+    followers: "Followers"
+    favorites: "Favorites"
+    listed: "Listed"
+    screen_name: "Screen name"
+    description: "Description"
+    statuses: "Statuses"
+    friends: "Friends"
+    tweet: "Tweet"
+    timestamp: "Posted"
+    via: "Via"
+  time:
+    ago: "%{time} ago"
+  via:
+    source: "via %{source}"
