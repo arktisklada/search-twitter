@@ -33,20 +33,20 @@
   .row
     .span8
       %h2
-        = result.name
+        = result["name"]
         %small
-          = screen_name_link result.screen_name
-      - unless result.description.blank?
+          = screen_name_link result["screen_name"]
+      - unless result["description.blank?"]
         %h6
-          = result.description
+          = result["description"]
     .span1
-      = number_with_delimiter result.statuses_count
+      = number_with_delimiter result["statuses_count"]
     .span1
-      = number_with_delimiter result.friends_count
+      = number_with_delimiter result["friends_count"]
     .span1
-      = number_with_delimiter result.followers_count
+      = number_with_delimiter result["followers_count"]
     .span1
-      = number_with_delimiter result.favorites_count
+      = number_with_delimiter result["favorites_count"]
   %hr
 
 
