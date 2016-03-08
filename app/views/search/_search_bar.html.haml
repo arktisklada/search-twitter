@@ -1,0 +1,16 @@
+.page-header
+  .row
+    .span4
+      %h1
+        = link_to t('app.name'), profile_path
+    .span4
+      %h4 Tweet Search
+      = form_tag search_tweet_path, method: :post do
+        = search_field_tag :query
+        = submit_tag t('button.search')
+
+    .span4
+      %h4 User Search
+      = form_tag search_people_path, method: :post do
+        = search_field_tag :query
+        = submit_tag t('button.search')

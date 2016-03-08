@@ -1,0 +1,27 @@
+= render "search/search_bar"
+
+.row
+  .span12
+    %h1
+      = t('h.tweet_search_query')
+      = @query
+
+%br
+
+%table.table
+  %tr
+    %th
+      = t('th.screen_name')
+    %th
+      = t('th.tweet')
+    %th
+      = t('th.timestamp')
+
+  - @results.each do |result|
+    %tr
+      %td
+        = screen_name_link result.user.screen_name
+      %td
+        = auto_link(result.text.dup).html_safe
+      %td
+        = t('time.ago', time: time_ago_in_words(result.created_at).capitalize)

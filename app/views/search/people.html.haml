@@ -1,0 +1,86 @@
+= render "search/search_bar"
+
+.row
+  .span12
+    %h1
+      = t('h.user_search_query')
+      = @query
+
+.row
+  .span8
+    / %h2
+    /   Username
+    /   %small
+    /     Screen name
+    / %h6 Description
+    &nbsp;
+  .span1
+    %strong
+      = t('th.tweets')
+  .span1
+    %strong
+      = t('th.following')
+  .span1
+    %strong
+      = t('th.followers')
+  .span1
+    %strong
+      = t('th.favorites')
+
+%hr
+
+- @results.each do |result|
+  .row
+    .span8
+      %h2
+        = result.name
+        %small
+          = screen_name_link result.screen_name
+      - unless result.description.blank?
+        %h6
+          = result.description
+    .span1
+      = number_with_delimiter result.statuses_count
+    .span1
+      = number_with_delimiter result.friends_count
+    .span1
+      = number_with_delimiter result.followers_count
+    .span1
+      = number_with_delimiter result.favorites_count
+  %hr
+
+
+/ %table
+/   %tr
+/     %th Name
+/     %th Screen name
+/     %th Description
+/     %th
+/       Statuses
+/       %br
+/       Friends
+
+/   - @results.each do |result|
+/     %tr
+/       %td
+/         = result.name
+/       %td
+/         = result.screen_name
+/       %td
+/         = result.description
+/       %td
+/         = result.statuses_count
+/         %br
+/         = result.friends_count
+/     %tr
+/       %td{colspan: 4}
+/         %hr
+
+
+.pagination.pagination-right
+  %ul
+    - unless @page == 1
+      %li
+        %a{href: search_people_path(query: @query, page: @page - 1), "data-method" => :post} Previous
+    %li
+      %a{href: search_people_path(query: @query, page: @page + 1), "data-method" => :post} Next
