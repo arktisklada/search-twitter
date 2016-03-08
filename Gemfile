@@ -3,6 +3,7 @@ ruby '2.2.2'
 
 gem 'rails', '~> 4.2.5'
 
+gem 'dalli'
 gem 'haml'
 gem 'jquery-rails'
 gem 'omniauth'

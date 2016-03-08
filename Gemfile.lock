@@ -50,6 +50,7 @@ GEM
       tins (~> 1.6.0)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    dalli (2.7.6)
     docile (1.1.5)
     domain_name (0.5.20160216)
       unf (>= 0.0.5, < 1.0.0)
@@ -211,6 +212,7 @@ PLATFORMS
 
 DEPENDENCIES
   coveralls
+  dalli
   dotenv
   haml
   jquery-rails
