@@ -7,6 +7,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'rails_12factor'
 gem 'twitter'
 gem 'twitter-text'
 
