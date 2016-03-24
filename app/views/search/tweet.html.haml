@@ -18,7 +18,7 @@
       = t('th.timestamp')
 
   - @results.each do |result|
-    %tr
+    %tr{ "link-to" => status_url(result.fetch("user", {})["screen_name"], result["id"]) }
       %td
         = screen_name_link result.fetch("user", {})["screen_name"]
       %td

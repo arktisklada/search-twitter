@@ -2,7 +2,7 @@ class SearchController < ApplicationController
   def tweet
     @query = params[:query]
     json = cache_fetch(:tweet, @query) do
-      client.search(@query, result_type: "popular").to_json
+      client.search(@query, result_type: "recent", count: 100).to_json
     end
 
     @results = JSON.parse json
