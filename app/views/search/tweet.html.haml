@@ -1,21 +1,23 @@
 = render "search/search_bar"
 
 .row
-  .span12
+  .col-md-12
     %h1
-      = t('h.tweet_search_query')
+      = t("label.#{@result_type}")
+      = t("h.tweet_search_query")
       = @query
+      %small #{@results.count} Results
 
 %br
 
 %table.table
   %tr
     %th
-      = t('th.screen_name')
+      = t("th.screen_name")
     %th
-      = t('th.tweet')
+      = t("th.tweet")
     %th
-      = t('th.timestamp')
+      = t("th.timestamp")
 
   - @results.each do |result|
     %tr{ "link-to" => status_url(result.fetch("user", {})["screen_name"], result["id"]) }
@@ -24,4 +26,4 @@
       %td
         = auto_link(result["text"].dup).html_safe
       %td
-        = t('time.ago', time: time_ago_in_words(result["created_at"]).capitalize)
+        = t("time.ago", time: time_ago_in_words(result["created_at"]).capitalize)

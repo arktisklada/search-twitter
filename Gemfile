@@ -12,6 +12,10 @@ gem 'rails_12factor'
 gem 'twitter'
 gem 'twitter-text'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap', '~> 3.3.6'
+end
+
 group :assets do
   gem 'sass-rails', '>= 4.0.3'
   gem 'uglifier'

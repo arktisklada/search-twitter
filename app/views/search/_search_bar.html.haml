@@ -1,16 +1,24 @@
 .page-header
   .row
-    .span4
+    .col-md-6
       %h1
-        = link_to t('app.name'), profile_path
-    .span4
-      %h4 Tweet Search
+        = link_to t("app.name"), profile_path
+    .col-md-3
+      %h5 Tweet Search
       = form_tag search_tweet_path, method: :post do
-        = search_field_tag :query
-        = submit_tag t('button.search')
+        .form-group
+          = search_field_tag :query, @status_query
+          = submit_tag t("button.search")
+          .form-group
+            = label_tag :result_type_popular, t("label.popular"), class: "radio-inline" do
+              = radio_button_tag :result_type, :popular, @result_type == "popular" || @result_type.nil?
+              Popular
+            = label_tag :result_type_recent, t("label.recent"), class: "radio-inline" do
+              = radio_button_tag :result_type, :recent, @result_type == "recent"
+              Recent
 
-    .span4
-      %h4 User Search
+    .col-md-3
+      %h5 User Search
       = form_tag search_people_path, method: :post do
-        = search_field_tag :query
-        = submit_tag t('button.search')
+        = search_field_tag :query, @people_query
+        = submit_tag t("button.search")

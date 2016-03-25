@@ -1,20 +1,41 @@
 class SearchController < ApplicationController
+  before_action :set_query
+
   def tweet
-    @query = params[:query]
-    json = cache_fetch(:tweet, @query) do
-      client.search(@query, result_type: "recent", count: 100).to_json
+    @status_query = query_param
+    @result_type = result_type_param
+    json = cache_fetch :tweet, @status_query, @result_type do
+      client.search(@status_query, result_type: @result_type, count: 100).to_json
     end
 
     @results = JSON.parse json
   end
 
   def people
-    @query = params[:query]
-    @page = params.fetch(:page, 1).to_i
-    json = cache_fetch(:people, @query, @page) do
-      client.user_search(@query, page: @page).to_json
+    @people_query = query_param
+    @page = page_param
+    json = cache_fetch :people, @people_query, @page do
+      client.user_search(@people_query, page: @page).to_json
     end
 
     @results = JSON.parse json
+  end
+
+  private
+
+  def query_param
+    params.require :query
+  end
+
+  def result_type_param
+    params.require :result_type
+  end
+
+  def page_param
+    params.permit(:page).fetch(:page, 1).to_i
+  end
+
+  def set_query
+    @query = query_param
   end
 end

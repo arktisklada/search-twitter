@@ -2,18 +2,18 @@
 %html
   %head
     %title
-      = t('app.name')
-    %meta{charset: 'utf-8'}
-    %meta{name: 'author', content: t('app.author')}
-    %meta{name: 'description', content: t('app.description')}
-    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+      = t("app.name")
+    %meta{charset: "utf-8"}
+    %meta{name: "author", content: t("app.author")}
+    %meta{name: "description", content: t("app.description")}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     = csrf_meta_tags
-    %link{rel: 'shortcut icon', href: '/favicon.ico'}
+    %link{rel: "shortcut icon", href: "/favicon.ico"}
 
-    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag "application"
 
-    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'
-    = javascript_include_tag 'application'
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+    = javascript_include_tag "application"
 
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -26,18 +26,14 @@
   %body
     .container
       - if flash[:notice]
-        .alert
-          %a{class: 'close', :'data-dismiss' => 'alert', href: '#'}
-            &times;
+        .alert.alert-success.alert-dismissible
+          %button{type: "button", class: "close", "data-dismiss": "alert", "aria-label": "Close"}
+            %span{"aria-hidden": "true"} &times;
           = flash[:notice]
-        :javascript
-          $('.alert').alert();
       - if flash[:error]
-        .alert.alert-error
-          %a{class: 'close', :'data-dismiss' => 'alert', href: '#'}
+        .alert.alert-danger.alert-dismissible
+          %a{class: "close", :"data-dismiss" => "alert", href: "#"}
             &times;
           = flash[:error]
-        :javascript
-          $('.alert').alert();
 
       = yield

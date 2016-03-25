@@ -1,4 +1,4 @@
-table, form {
+/*table, form {
   margin-bottom: 0;
 }
 
@@ -19,7 +19,7 @@ footer {
 }
 
 .container > footer p {
-  text-align: center; /* center align it with the container */
+  text-align: center;
 }
 
 @media (max-width: 480px) {
@@ -77,3 +77,4 @@ footer {
             border-top-right-radius: 0;
   }
 }
+*/

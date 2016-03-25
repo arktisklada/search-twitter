@@ -8,7 +8,9 @@ class SessionsController < ApplicationController
 
   def show
     if session['access_token'] && session['access_token_secret']
-      @user = client.user(include_entities: true)
+      @user = cache_fetch :user do
+        client.user include_entities: true
+      end
     else
       redirect_to failure_path
     end

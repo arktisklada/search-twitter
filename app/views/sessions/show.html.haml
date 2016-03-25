@@ -1,7 +1,7 @@
 = render "search/search_bar"
 
 .row
-  .span6
+  .col-md-6
     %h1
       = @user.name
       %small
@@ -9,18 +9,18 @@
     - unless @user.description.blank?
       %h6
         = @user.description
-  .span6
+  .col-md-6
     %table.table
       %thead
         %tr
           %th
-            = t('th.tweets')
+            = t("th.tweets")
           %th
-            = t('th.following')
+            = t("th.following")
           %th
-            = t('th.followers')
+            = t("th.followers")
           %th
-            = t('th.favorites')
+            = t("th.favorites")
       %tbody
         %tr
           %td
@@ -32,35 +32,35 @@
           %td
             = number_with_delimiter @user.favorites_count
 .row
-  .span12
+  .col-md-12
     - unless @user.status.blank?
+      %hr
       %blockquote
-        %q{cite: 'https://twitter.com/#{@user.screen_name}/status/#{@user.status.id}'}
-          %p
-            = auto_link(@user.status.text.dup).html_safe
+        %p
+          = auto_link(@user.status.text.dup).html_safe
         %small
-          = t('time.ago', time: time_ago_in_words(@user.status.created_at).capitalize)
-          = t('via.source', source: @user.status.source).html_safe
+          = t("time.ago", time: time_ago_in_words(@user.status.created_at).capitalize)
+          = t("via.source", source: @user.status.source).html_safe
 
 .row
-  / .span6
+  / .col-md-6
   /   %dl.dl-horizontal
   /     %dt
   /       Access&nbsp;token
   /     %dd
-  /       = session['access_token']
+  /       = session["access_token"]
   /     %dt
   /       Access&nbsp;token&nbsp;secret
   /     %dd
-  /       = session['access_token_secret']
+  /       = session["access_token_secret"]
   / .span2.offset4
-  /   = form_tag(signout_path, method: 'delete') do
+  /   = form_tag(signout_path, method: "delete") do
   /     %fieldset
   /       %button.btn.btn-danger#sign_out
-  /         = t('button.sign_out')
+  /         = t("button.sign_out")
 
 
-= form_tag(signout_path, method: 'delete') do
+= form_tag(signout_path, method: "delete") do
   %fieldset
     %button.btn.btn-danger#sign_out
-      = t('button.sign_out')
+      = t("button.sign_out")

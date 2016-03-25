@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def cache_fetch(*keys, &block)
-    cache_key = keys.join("/")
+    cache_key = keys.join "/"
     Rails.cache.fetch cache_key, expires_in: 5.minutes do
       block.call
     end

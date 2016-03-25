@@ -1,37 +1,38 @@
 = render "search/search_bar"
 
 .row
-  .span12
+  .col-md-12
     %h1
-      = t('h.user_search_query')
+      = t("h.user_search_query")
       = @query
+      %small Page #{@page}
 
 .row
-  .span8
+  .col-md-8
     / %h2
     /   Username
     /   %small
     /     Screen name
     / %h6 Description
     &nbsp;
-  .span1
+  .col-md-1
     %strong
-      = t('th.tweets')
-  .span1
+      = t("th.tweets")
+  .col-md-1
     %strong
-      = t('th.following')
-  .span1
+      = t("th.following")
+  .col-md-1
     %strong
-      = t('th.followers')
-  .span1
+      = t("th.followers")
+  .col-md-1
     %strong
-      = t('th.favorites')
+      = t("th.favorites")
 
 %hr
 
 - @results.each do |result|
   .row
-    .span8
+    .col-md-8
       %h2
         = result["name"]
         %small
@@ -39,13 +40,13 @@
       - unless result["description.blank?"]
         %h6
           = result["description"]
-    .span1
+    .col-md-1
       = number_with_delimiter result["statuses_count"]
-    .span1
+    .col-md-1
       = number_with_delimiter result["friends_count"]
-    .span1
+    .col-md-1
       = number_with_delimiter result["followers_count"]
-    .span1
+    .col-md-1
       = number_with_delimiter result["favourites_count"]
   %hr
 
@@ -77,10 +78,10 @@
 /         %hr
 
 
-.pagination.pagination-right
-  %ul
-    - unless @page == 1
-      %li
-        %a{href: search_people_path(query: @query, page: @page - 1), "data-method" => :post} Previous
+
+%ul.pagination.pagination-right
+  - unless @page == 1
     %li
-      %a{href: search_people_path(query: @query, page: @page + 1), "data-method" => :post} Next
+      %a{href: search_people_path(query: @query, page: @page - 1), "data-method" => :post} Previous
+  %li
+    %a{href: search_people_path(query: @query, page: @page + 1), "data-method" => :post} Next

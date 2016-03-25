@@ -12,10 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require_tree .
 
-$(function() {
-  $("[link-to]").on("click", function() {
-    window.open($(this).attr("link-to"), "_blank");
-  });
-});
+// $(function() {
+//   $("[link-to]").on("click", function() {
+//     window.open($(this).attr("link-to"), "_blank");
+//   });
+// });
