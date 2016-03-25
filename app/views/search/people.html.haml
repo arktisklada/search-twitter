@@ -9,12 +9,6 @@
 
 .row
   .col-md-8
-    / %h2
-    /   Username
-    /   %small
-    /     Screen name
-    / %h6 Description
-    &nbsp;
   .col-md-1
     %strong
       = t("th.tweets")
@@ -80,8 +74,14 @@
 
 
 %ul.pagination.pagination-right
+  - if @page == 1
+    %li.disabled
+      %span
+        = t("pagination.previous")
   - unless @page == 1
     %li
-      %a{href: search_people_path(query: @query, page: @page - 1), "data-method" => :post} Previous
+      %a{href: search_people_path(query: @query, page: @page - 1), "data-method" => :post}
+        = t("pagination.previous")
   %li
-    %a{href: search_people_path(query: @query, page: @page + 1), "data-method" => :post} Next
+    %a{href: search_people_path(query: @query, page: @page + 1), "data-method" => :post}
+      = t("pagination.next")
