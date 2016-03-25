@@ -1,3 +1,4 @@
+require 'pp'
 class SearchController < ApplicationController
   before_action :set_query
 
@@ -9,6 +10,7 @@ class SearchController < ApplicationController
     end
 
     @results = JSON.parse json
+    pp @results.first
   end
 
   def people

@@ -15,8 +15,10 @@
 //= require bootstrap
 //= require_tree .
 
-// $(function() {
-//   $("[link-to]").on("click", function() {
-//     window.open($(this).attr("link-to"), "_blank");
-//   });
-// });
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+
+  // $("[link-to]").on("click", function() {
+  //   window.open($(this).attr("link-to"), "_blank");
+  // });
+});

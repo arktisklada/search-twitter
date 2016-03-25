@@ -10,7 +10,7 @@
 
 %br
 
-%table.table
+%table.table.table-hover
   %tr
     %th
       = t("th.screen_name")
@@ -18,12 +18,20 @@
       = t("th.tweet")
     %th
       = t("th.timestamp")
+    %th
+      = t("th.retweets")
+    %th
+      = t("th.favorites")
 
   - @results.each do |result|
-    %tr{ "link-to" => status_url(result.fetch("user", {})["screen_name"], result["id"]) }
+    %tr{"link-to" => status_url(result.fetch("user", {})["screen_name"], result["id"])}
       %td
-        = screen_name_link result.fetch("user", {})["screen_name"]
+        = screen_name_link result.fetch("user", {})["screen_name"], user_tooltip_options(result.fetch("user", {}))
       %td
         = auto_link(result["text"].dup).html_safe
       %td
         = t("time.ago", time: time_ago_in_words(result["created_at"]).capitalize)
+      %td
+        = result["retweet_count"]
+      %td
+        = result["favorite_count"]
