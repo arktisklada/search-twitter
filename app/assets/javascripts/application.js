@@ -18,7 +18,9 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 
-  // $("[link-to]").on("click", function() {
-  //   window.open($(this).attr("link-to"), "_blank");
-  // });
+  $("[link-to]").on("click", function() {
+    window.open($(this).attr("link-to"), "_blank");
+  }).find("a").on("click", function(e) {
+    e.stopPropagation();
+  });
 });

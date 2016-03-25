@@ -28,7 +28,7 @@
       %td
         = screen_name_link result.fetch("user", {})["screen_name"], user_tooltip_options(result.fetch("user", {}))
       %td
-        = auto_link(result["text"].dup).html_safe
+        = auto_link(result["text"].dup, target: "_blank").html_safe
       %td
         = t("time.ago", time: time_ago_in_words(result["created_at"]).capitalize)
       %td
